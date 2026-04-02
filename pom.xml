@@ -10,6 +10,13 @@
     <version>1.0</version>
     <packaging>war</packaging>
 
+    <!-- ✅ Java version fix -->
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <!-- ✅ Servlet dependency -->
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -19,8 +26,30 @@
         </dependency>
     </dependencies>
 
+    <!-- ✅ Strong fix for compiler issue -->
     <build>
         <finalName>myapp</finalName>
+        <plugins>
+
+            <!-- Java compiler plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+
+            <!-- WAR plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+
+        </plugins>
     </build>
 
 </project>
